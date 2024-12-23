@@ -6,9 +6,14 @@ ALWAYS
   ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN FAIL @3 END // Modmerge check
 
   // convert strings to UTF-8 for BGEE/BG2EE
-  ACTION_DEFINE_ARRAY cdreload BEGIN setup END
-  LAF HANDLE_CHARSETS INT_VAR infer_charsets = 1 STR_VAR tra_path = ~druidsor/languages~ reload_array = cdreload END
-
+  ACTION_DEFINE_ARRAY T_reload BEGIN setup END
+  ACTION_DEFINE_ARRAY T_noconvert BEGIN install END
+  LAF HANDLE_CHARSETS
+        INT_VAR infer_charsets = 1 
+		STR_VAR tra_path = ~druidsor/languages~ 
+         noconvert_array = T_noconvert
+         reload_array = T_reload
+		 END
 END
 
 VERSION ~v6~
@@ -23,7 +28,9 @@ LANGUAGE ~Francais (Translation by zooloo of the D'Oghmatiques)~
          ~french~
          ~druidsor/languages/english/setup.tra~ // English
          ~druidsor/languages/french/setup.tra~ // French
-
+LANGUAGE ~Schinese(Translation by redrumcha&EpicWizard&eva2000as)~
+         ~schinese~
+         ~druidsor/languages/schinese/install.tra~
 
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
